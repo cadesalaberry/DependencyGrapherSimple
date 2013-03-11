@@ -18,7 +18,7 @@ Assume you have *n* tasks to perform, arranged as such as a dependency DAG *G = 
 (a) **4** Is there any lower bound constraint(s) on the solution (minimum time to do all tasks) for an arbitrary *n*, *p*, and dependence DAG? Explain. 
 (Note that this question is asking about the solution itself, not the running time of the algorithm generating the solution!) 
 
->Yes there is a lower-bound: *n/p*
+>Yes there is a lower-bound, when every workers work all the time (i.e execute task all the time). If 1 is the time that the workers take to execute one task, with n tasks and p workers, it would take *n/p* time to finish all the tasks in this case. This is the best scenario case.
 
 
 (b) **6** Describe a _greedy_ solution to perform all tasks in as little total time as possible. Your solution does not need to be optimal, but it should be as good as you can make it. 
@@ -69,6 +69,8 @@ Give a clear pseudo-code description of your proposed algorithm. Is your solutio
 			for each node of node.destinations
 				add node to destinations with no duplicates
 
+> The algorithm definitely is not optimal, (it's greedy) it fits for every nodes, but does not optimizes itself for special cases. To get an optimal solution we would have to look at the big picture, and then deduce what would be the shortest path. Just like we do when we try to schedule a team.
+
 (c) **10** You do not need to actually implement the above algorithm (although it should be clearly implementable). However, testing such an algorithm would require some input dependency DAGs.
 Design and implement an algorithm that accepts 1 or 2 command-line parameters: *n*, and an optional seed to a random number generator. A template is provided in *MyCourses*.
 Your program should emit the graph to standard output in an adjacency list format. For each vertex emit a single line starting with the vertex number followed by the list of vertices to which there are outgoing edges, all separated by spaces. Do not include anything else in the output. For example
@@ -101,17 +103,17 @@ Connect as many nodes as possible without crossing edges. Emit the total number 
 Note: rendering the results visually is not required. However, for debugging it is helpful, so a library
 to help you draw graphs is provided in *MyCourses*. nb: You do **NOT** need to include this library in your submission.
 
-> 
-
+> See Edger.java
 
 (b) **5** What is the worst-case asymptotic complexity of your edge-addition process? Give a brief high-level description of your approach, a suitable (tight) complexity class, and an argument explaining how/why you derived that complexity.
 
-> 
+> If every line drawn intersect with the last edge recorded, the program will have to go through all the vertices O(n), do it again to try to link them O(n), and go through all the edges already recorded O(n). Therefore the complexity will be O(n^3) 
 
 
 (c) **5** Plot the number of edges added as a function of *n*. Comment on the results—what do you observe?
 
-> 
+> we get a trend of ~ y = 2.9845754634 x -10.9435856845
+Therefore a graph with x points will roughtly have 3 x edges that will not intersect.
 
 
 
@@ -122,4 +124,7 @@ Drawing a line on the plane bisects the plane into two pieces. Suppose you then 
 An adjacency graph can be constructed to represent this. Each node represents an undivided portion of the plane, and edges exist between portions that share a boundary edge (as created by your lines). An example is shown below.
 Use induction to prove that the adjacency graph is always a bipartite graph for any such arrangement of lines.
 
-> 
+> Base case: 0 cut, leads to one region therefore one color. It is bipartite by definition.
+Induction:
+For each cuts added the region will bit split into two smaller regions which will be bipartite as well by definition
+

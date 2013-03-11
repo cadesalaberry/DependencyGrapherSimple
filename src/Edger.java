@@ -66,47 +66,24 @@ public class Edger {
 
 		// Get the maximum valid edges
 		Edge[] edges = getMaxEdgesNoIntersect(vertices);
-		/*
-		 * for (int i = 0; i < e; i++) { int ind1 = r.nextInt(n); int ind2 =
-		 * r.nextInt(n); edges[i] = new Edge(vertices[ind1], vertices[ind2]); }
-		 */
 
 		Graph g = new Graph(vertices, edges);
 		return g;
 	}
 
 	static Edge[] getMaxEdgesNoIntersect(Vertex[] vertices) {
+
 		ArrayList<Edge> edges = new ArrayList<>();
-		
+
 		// Parse vertices one by one
 		for (int i = 0; i < vertices.length; i++) {
-			
-			// Try to link them to every following vertices
-			for (int j = i ; j < vertices.length; j++) {
 
-				int x1 = vertices[i].getX();
-				int y1 = vertices[i].getY();
-				int x2 = vertices[j].getX();
-				int y2 = vertices[j].getY();
-				Line2D line = new Line2D.Double(x1, y1, x2, y2);
-				
-				// Checks if it intersects a previously recorded edge.
-				boolean intersect = false;
-				for (Edge e : edges) {
-					
-					int ex1 = e.getV1().getX();
-					int ey1 = e.getV1().getY();
-					int ex2 = e.getV2().getX();
-					int ey2 = e.getV2().getY();
-					Line2D line2 = new Line2D.Double(ex1, ey1, ex2, ey2);
-					
-					if (line.intersectsLine(line2)) {
-						intersect = true;
-						break;
-					}
-				}
-				
-				if (!intersect) {
+			// Try to link them to every following vertices
+			for (int j = i; j < vertices.length; j++) {
+
+				Line2D line1 = vertices2line(vertices[i], vertices[j]);
+
+				if (!lineIntersectsEdges(line1, edges)) {
 					edges.add(new Edge(vertices[i], vertices[j]));
 				}
 			}
@@ -114,5 +91,45 @@ public class Edger {
 		Edge[] array = new Edge[edges.size()];
 		System.out.println("Size: " + edges.size());
 		return edges.toArray(array);
+	}
+
+	/**
+	 * Helper method to convert two vertices to a Line2D.
+	 * 
+	 * @param v1
+	 * @param v2
+	 * @return
+	 */
+	static Line2D vertices2line(Vertex v1, Vertex v2) {
+
+		int x1 = v1.getX();
+		int y1 = v1.getY();
+		int x2 = v2.getX();
+		int y2 = v2.getY();
+		Line2D line = new Line2D.Double(x1, y1, x2, y2);
+		return line;
+	}
+
+	/**
+	 * Checks if the given line intersects a previously recorded edge.
+	 * 
+	 * @param l
+	 * @param edges
+	 * @return
+	 */
+	static boolean lineIntersectsEdges(Line2D l, ArrayList<Edge> edges) {
+
+		boolean intersects = false;
+
+		for (Edge e : edges) {
+
+			Line2D line2 = vertices2line(e.getV1(), e.getV2());
+
+			if (l.intersectsLine(line2)) {
+				intersects = true;
+				break;
+			}
+		}
+		return intersects;
 	}
 }
