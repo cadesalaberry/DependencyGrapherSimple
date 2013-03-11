@@ -1,4 +1,4 @@
-#SATSolver
+#Dependency Grapher
 =============
 
 ## COMP251
