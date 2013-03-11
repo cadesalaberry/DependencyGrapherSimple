@@ -30,7 +30,7 @@ Give a clear pseudo-code description of your proposed algorithm. Is your solutio
 	List<Node> destinations
 	List<Node> workers
 
-	findOptimalTaskOrder(Tasks[n] tasks)
+	int findOptimalTaskOrder(Tasks[n] tasks)
 		
 		updateRootsAndDestinations()
 		int hours
@@ -44,11 +44,19 @@ Give a clear pseudo-code description of your proposed algorithm. Is your solutio
 					add root to workers
 					delete root from roots
 					delete root from destinations
+					print root,
 			
 					// Limit to the number of workers
 					if size of workers >= p
 						empty workers
 						hours++
+						print \n
+
+			empty workers
+			hours++
+			print \n
+
+		return hours
 
 		
 	updateRootsAndDestinations()
