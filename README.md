@@ -35,23 +35,20 @@ Give a clear pseudo-code description of your proposed algorithm. Is your solutio
 		updateRootsAndDestinations()
 		int hours
 		
-		// Checks that the root has no predecessor (it will be our next task)
-		for each node of roots
-			if root does not exist in destinations
+		while (workers is not empty)
 
-				add root to workers
-				delete root from roots
-				delete root from destinations
+			// Checks that the root has no predecessor (it will be our next task)
+			for each node of roots
+				if root does not exist in destinations
+					
+					add root to workers
+					delete root from roots
+					delete root from destinations
 			
-				// Limit to the number of workers
-				if size of workers >= p
-					empty workers
-					hours++
-		
-
-		if workers in not empty
-			empty workers
-			hour++
+					// Limit to the number of workers
+					if size of workers >= p
+						empty workers
+						hours++
 
 		
 	updateRootsAndDestinations()
