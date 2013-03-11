@@ -104,9 +104,7 @@ to help you draw graphs is provided in *MyCourses*. nb: You do **NOT** need to i
 > 
 
 
-(b) **5** What is the worst-case asymptotic complexity of your edge-addition process? Give a brief high-
-level description of your approach, a suitable (tight) complexity class, and an argument explaining
-how/why you derived that complexity.
+(b) **5** What is the worst-case asymptotic complexity of your edge-addition process? Give a brief high-level description of your approach, a suitable (tight) complexity class, and an argument explaining how/why you derived that complexity.
 
 > 
 
