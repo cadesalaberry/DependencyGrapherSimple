@@ -1,14 +1,7 @@
-#Dependency Grapher
+Dependency Grapher
 =============
 
-## COMP251
-
-### Winter 2013
-
-#### Homework 3
-
-
-#### Question 1 ~ __/20
+## Question 1 (20)
 
 A *dependency graph* is a DAG that describes necessary precedence between individual tasks: each task is represented by a node, and if *t1* must be completed before *t2* can be started, then there is a directed
 edge from the node representing *t1* to the node representing *t2*.
@@ -82,7 +75,7 @@ Your program should emit the graph to standard output in an adjacency list forma
 Your function must be capable of generating any possible DAG on *n* nodes.
 
 
-#### Question 2 ~ __/20
+## Question 2 (20)
 
 
 Consider a rectangle in the positive quadrant of R^2 , with bottom-left corner at the origin. Inside are *n − 4* points, randomly located (ie random coordinates, but strictly within the rectangle). The goal is to add as many edges as possible between points, using straight lines only, and without allowing any edges to intersect.
@@ -117,7 +110,7 @@ Therefore a graph with x points will roughtly have 3 x edges that will not inter
 
 
 
-#### Question 3 ~ __/10
+## Question 3 (10)
 
 
 Drawing a line on the plane bisects the plane into two pieces. Suppose you then draw another line, not parallel to the first. It will further divide the two halves of the plane. You can keep on doing this, each time choosing a new line of arbitrary slope, but not parallel to any other line (also assume no more than 2 lines meet at any point).
